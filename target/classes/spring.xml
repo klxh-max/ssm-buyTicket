@@ -19,7 +19,7 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!--    声明扫描器-->
-    <context:component-scan base-package="com.duyi.service"/>
+    <context:component-scan base-package="com.duyi.service,com.duyi.dao"/>
 <!--加载外部配置文件-->
     <context:property-placeholder location="classpath:druid.properties"/>
 <!--    创建数据源-->
@@ -32,6 +32,8 @@
     <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="datasource"/>
         <property name="configLocation" value="classpath:mybatis.xml"/>
+        <!-- 扫描sql配置文件:mapper需要的xml文件 -->
+        <property name="mapperLocations" value="classpath:mappers/*.xml"/>
     </bean>
     <!--告诉spring框架，如果有人（service）想要dao包中接口的代理类
     就是用指定sessionFactory创建的sqlSession，
@@ -39,11 +41,6 @@
     <bean id="mapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="factory"/>
         <property name="basePackage" value="com.duyi.dao"/>
-    </bean>
-
-    <!--管理事务-->
-    <bean name="manager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="datasource"/>
     </bean>
 
 </beans>

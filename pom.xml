@@ -147,8 +147,33 @@
       <version>1.2.4</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-impl -->
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+      <version>1.2.5</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.taglibs/taglibs-standard-spec -->
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-spec</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
+    <dependency>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-core</artifactId>
+      <version>1.4.0</version>
+    </dependency>
+
+
 
   </dependencies>
+
+
 
   <build>
     <finalName>ssm-buyTicket</finalName>
@@ -185,5 +210,25 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+
   </build>
 </project>
