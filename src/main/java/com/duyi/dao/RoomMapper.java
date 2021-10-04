@@ -13,4 +13,6 @@ public interface RoomMapper {
     List<Room> selectAll();
 
     int updateByPrimaryKey(Room record);
+
+    Room selectByRoomId(String roomId);
 }

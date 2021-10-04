@@ -45,7 +45,7 @@
                         <p>剧情简介: ${filmDetailVo.synopsis}</p>
 
                         <strong>
-                            <a href="play?filmId=${vo.filmId}">查看排片信息</a>
+                            <a href="schedule?filmId=${filmDetailVo.filmId}">查看排片信息</a>
                         </strong>
 
                     </div>
@@ -53,6 +53,8 @@
             </div>
         </div>
         </div>
+
+
 
     </body>
 </html>

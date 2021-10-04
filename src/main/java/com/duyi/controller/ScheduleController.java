@@ -1,9 +1,11 @@
 package com.duyi.controller;
 
 import com.duyi.service.ScheduleService;
+import com.duyi.vo.ScheduleDetailVo;
 import com.duyi.vo.ScheduleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,9 +17,16 @@ public class ScheduleController {
     private ScheduleService service;
 
     @RequestMapping("schedule")
-    @ResponseBody
-    public List<ScheduleVo> selectByFilmId(String filmId){
+    public String selectByFilmId(String filmId, Model model){
         List<ScheduleVo> voList=service.selectByFilmId(filmId);
-        return voList;
+        model.addAttribute("voList",voList);
+        return "schedule";
+    }
+
+    @RequestMapping("seat")
+    public String showSeats(String scheduleId,Model model){
+        ScheduleDetailVo detailVo=service.getDetailVoById(scheduleId);
+        model.addAttribute("detailVo",detailVo);
+        return "seat";
     }
 }

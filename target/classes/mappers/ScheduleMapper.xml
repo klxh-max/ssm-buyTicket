@@ -86,4 +86,10 @@
     from schedule where film_id = #{filmId,jdbcType=VARCHAR}
   </select>
 
+  <select id="selectByScheduleId" resultMap="BaseResultMap">
+    select id, schedule_id, schedule_time, lan_type, price, room_id, room_name, film_id,
+           film_name
+    from schedule where schedule_id = #{scheduleId,jdbcType=VARCHAR}
+  </select>
+
 </mapper>
