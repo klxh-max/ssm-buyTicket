@@ -391,23 +391,23 @@
 
             $.ajax({
                 type: "post",
-                url: "buy",
-                data: {
-                    scheduleId:${detailVo.scheduleId},
-                    cnt: cnt,
-                    seatStr: $(".seatInfo").text()
+                url:"buy",
+                data:{
+                    scheduleId: ${detailVo.scheduleId},
+                    cnt:cnt,
+                    seatStr:$(".seatInfo").text(),
+                    onePrice:${detailVo.price}
                 },
-                dataType: "json",
-                success: function (data) {
-                    if (data == 1) {
-                        alert("成功购买" + cnt + "张票");
-                    } else {
+                dataType:"json",
+                success:function (data) {
+                    if(data==1){
+                        alert("成功购买"+cnt+"张票");
+                    }else {
                         alert("购买失败");
                     }
-                    // 应该刷新当前页面
+                    //应该刷新当前选座页面
                     window.location.reload();
                 }
-
             });
 
 
